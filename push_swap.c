@@ -4,10 +4,11 @@
 int	main(int argc, char **argv)
 {
 	t_list	*stack_a;
-	printf("%d\n", argc);
-	printf("%s\n", argv[1]);
-	printf("%s\n", argv[2]);
-//	if (input_handler(argv))
-//		return (1);
+
+	stack_a = NULL;
+	input_handler(&stack_a, argc, argv);
+	printf("%d\n", stack_a->content);
+	printf("%d\n", stack_a->next->content);
+	ft_lstclear(&stack_a);
 	return (0);
 }

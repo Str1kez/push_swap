@@ -1,4 +1,4 @@
-#include "src.h"
+#include "input_handlers.h"
 
 static char	*duplicate(char const *start, char const *end)
 {

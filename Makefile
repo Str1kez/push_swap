@@ -1,7 +1,6 @@
 LIST_FILES	= 	./list_process/ft_lstadd_back.c	\
 				./list_process/ft_lstadd_front.c	\
 				./list_process/ft_lstclear.c	\
-				./list_process/ft_lstdelone.c	\
 				./list_process/ft_lstlast.c	\
 				./list_process/ft_lstnew.c	\
 				./list_process/ft_lstsize.c

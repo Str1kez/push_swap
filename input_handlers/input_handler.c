@@ -1,16 +1,12 @@
-static	int	is_right_char(int c)
-{
-	if ((c < 58) && (c > 47) || c == '-')
-		return (1);
-	return (0);
-}
+#include "input_handlers.h"
 
-static	int	check_failure(char *arg)
+static	void	check_exception(int exc)
 {
-	while (*arg)
-		if (!is_right_char(*arg++))
-			return (1);
-	return (0);
+	if (exc == -1)
+	{
+		ft_putstr("Error\n");
+		exit(1);
+	}
 }
 
 static	void	clean_array(char **arr)
@@ -23,11 +19,37 @@ static	void	clean_array(char **arr)
 	free(help);
 }
 
-int	input_handler(char	**argv)
+static	void	arr_to_list(t_list **stack, char **arr, int is_malloc)
 {
-	while (*argv)
-	{
+	int		content;
+	char	**help;
 
-		argv++;
+	help = arr;
+	while (*arr)
+	{
+		content = ft_atoi(*arr);
+		if (content == -1)
+		{
+			ft_lstclear(stack);
+			if (is_malloc)
+				clean_array(help);
+		}
+		check_exception(content);
+		ft_lstadd_back(stack, ft_lstnew(content));
+		arr++;
 	}
+}
+
+void	input_handler(t_list **stack, int argc, char **argv)
+{
+	char	**arr;
+
+	if (argc == 2)
+	{
+		arr = ft_split(argv[1], ' ');
+		arr_to_list(stack, arr, 1);
+		clean_array(arr);
+	}
+	if (argc > 2)
+		arr_to_list(stack, argv + 1, 0);
 }
