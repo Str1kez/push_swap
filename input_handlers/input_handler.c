@@ -1,14 +1,5 @@
 #include "input_handlers.h"
 
-static	void	check_exception(int exc)
-{
-	if (exc == -1)
-	{
-		ft_putstr("Error\n");
-		exit(1);
-	}
-}
-
 static	void	clean_array(char **arr)
 {
 	char	**help;

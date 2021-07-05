@@ -23,7 +23,7 @@ int	ft_atoi(const char *str)
 	while (*(str + sign))
 	{
 		result *= 10;
-		result += *str - 48;
+		result += *(str + sign) - 48;
 		if (is_overflow(&result, &sign))
 			return (-1);
 		str++;
