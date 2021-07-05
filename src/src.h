@@ -9,7 +9,9 @@
 
 void	ft_putstr(char *s);
 void	print_command(int cmd);
-void	check_exception(int exc);
-void	check_duplicate(t_list **stack);
+void	swap_top(t_list *stack);
+void	push_top(t_list **put, t_list **take);
+void	rotate(t_list **stack);
+void	reverse_rotate(t_list **stack);
 
 #endif //PUSH_SWAP_SRC_H

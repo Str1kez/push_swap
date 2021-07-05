@@ -1,4 +1,4 @@
-#include "src.h"
+#include "input_handlers.h"
 
 void	check_duplicate(t_list **stack)
 {

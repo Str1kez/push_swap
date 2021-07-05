@@ -43,4 +43,5 @@ void	input_handler(t_list **stack, int argc, char **argv)
 	}
 	if (argc > 2)
 		arr_to_list(stack, argv + 1, 0);
+	check_duplicate(stack);
 }

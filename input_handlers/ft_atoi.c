@@ -15,7 +15,7 @@ int	ft_atoi(const char *str)
 	int			sign;
 
 	result = 0;
-	if (invalid_check(str))
+	if (check_invalid_input(str))
 		return (-1);
 	sign = 0;
 	if (*str == '-')
