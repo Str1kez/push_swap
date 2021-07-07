@@ -8,6 +8,8 @@ t_list	*ft_lstnew(int content)
 	if (!node)
 		return (NULL);
 	node->content = content;
+	node->order = 0;
+	node->flag = 0;
 	node->next = NULL;
 	return (node);
 }

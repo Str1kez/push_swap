@@ -9,13 +9,14 @@ static	int	is_overflow(const long long *num, const int *sign)
 	return (0);
 }
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, int *flag)
 {
 	long long	result;
 	int			sign;
 
 	result = 0;
-	if (check_invalid_input(str))
+	*flag = check_invalid_input(str);
+	if (*flag)
 		return (-1);
 	sign = 0;
 	if (*str == '-')
@@ -24,7 +25,8 @@ int	ft_atoi(const char *str)
 	{
 		result *= 10;
 		result += *(str + sign) - 48;
-		if (is_overflow(&result, &sign))
+		*flag = is_overflow(&result, &sign);
+		if (*flag)
 			return (-1);
 		str++;
 	}

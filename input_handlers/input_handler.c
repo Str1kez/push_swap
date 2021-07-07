@@ -14,18 +14,20 @@ static	void	arr_to_list(t_list **stack, char **arr, int is_malloc)
 {
 	int		content;
 	char	**help;
+	int		flag;
 
+	flag = 0;
 	help = arr;
 	while (*arr)
 	{
-		content = ft_atoi(*arr);
-		if (content == -1)
+		content = ft_atoi(*arr, &flag);
+		if (flag)
 		{
 			ft_lstclear(stack);
 			if (is_malloc)
 				clean_array(help);
 		}
-		check_exception(content);
+		check_exception(flag);
 		ft_lstadd_back(stack, ft_lstnew(content));
 		arr++;
 	}

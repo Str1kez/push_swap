@@ -14,7 +14,7 @@ void	check_duplicate(t_list **stack)
 			if (head->content == help->content)
 			{
 				ft_lstclear(stack);
-				check_exception(-1);
+				check_exception(1);
 			}
 			help = help->next;
 		}
