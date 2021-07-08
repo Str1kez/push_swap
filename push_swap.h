@@ -22,5 +22,8 @@ void	first_less_then_mid(t_list **stack_a, t_list **stack_b, t_state *state);
 void	first_more_then_mid(t_list **stack_b, t_list **stack_a, t_state *state);
 void	migrate_to_a(t_list	**stack_a, t_list **stack_b, t_state *state);
 void	equals_flag_to_b(t_list **stack_a, t_list **stack_b);
+void	less_then_mid_with_sorted(t_list **stack_a,
+			t_list **stack_b, t_state *state);
+void	rotate_sorted_stack(t_list **stack_a, t_list **stack_b, t_state *state);
 
 #endif //PUSH_SWAP_H

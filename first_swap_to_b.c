@@ -14,3 +14,15 @@ void	first_less_then_mid(t_list **stack_a, t_list **stack_b, t_state *state)
 		size_a--;
 	}
 }
+
+void	less_then_mid_with_sorted(t_list **stack_a,
+								  t_list **stack_b, t_state *state)
+{
+	while ((*stack_a)->order > 1)
+	{
+		if ((*stack_a)->order <= state->mid)
+			push_top(stack_b, stack_a);
+		else
+			rotate(stack_a);
+	}
+}

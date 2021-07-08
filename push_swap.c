@@ -1,7 +1,7 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-void check_leaks();
+void	check_leaks();
 
 void	print_stack(t_list *stack)
 {
@@ -23,21 +23,43 @@ static	void	init_state(t_state *state)
 	state->max = 0;
 }
 
-void	push_swap(t_list **stack_a, t_list **stack_b, t_state *state)
+static	void	push_swap_half(t_list **stack_a,
+								 t_list **stack_b, t_state *state)
 {
 	if (is_sorted(*stack_a))
-		return;
+		return ;
 	state->max = ft_lstsize(*stack_a);
-	state->mid = state->max / 2 + state->next;
-	first_less_then_mid(stack_a, stack_b, state);
-	print_stack(*stack_a);
-	print_stack(*stack_b);
+	state->mid = (state->max - state->next) / 2 + state->next;
+	if (((*stack_a)->order == state->max) && ((*stack_a)->next->order == 1))
+	{
+		rotate(stack_a);
+		return ;
+	}
+	less_then_mid_with_sorted(stack_a, stack_b, state);
+	rotate_sorted_stack(stack_a, stack_b, state);
 	migrate_to_a(stack_a, stack_b, state);
 	while ((*stack_a)->flag)
 	{
 		equals_flag_to_b(stack_a, stack_b);
 		migrate_to_a(stack_a, stack_b, state);
 	}
+	push_swap_half(stack_a, stack_b, state);
+}
+
+static	void	push_swap(t_list **stack_a, t_list **stack_b, t_state *state)
+{
+	if (is_sorted(*stack_a))
+		return ;
+	state->max = ft_lstsize(*stack_a);
+	state->mid = state->max / 2 + state->next;
+	first_less_then_mid(stack_a, stack_b, state);
+	migrate_to_a(stack_a, stack_b, state);
+	while ((*stack_a)->flag)
+	{
+		equals_flag_to_b(stack_a, stack_b);
+		migrate_to_a(stack_a, stack_b, state);
+	}
+	push_swap_half(stack_a, stack_b, state);
 }
 
 int	main(int argc, char **argv)
@@ -58,7 +80,7 @@ int	main(int argc, char **argv)
 	push_swap(&stack_a, &stack_b, &state);
 	print_stack(stack_a);
 	print_stack(stack_b);
-	printf("%d\n", state.max);
+	printf("%d\t%d\n", state.max, state.next);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
 	check_leaks();
