@@ -1,6 +1,6 @@
 #include "push_swap.h"
 
-void	equals_flag_to_b(t_list **stack_a, t_list **stack_b)
+void	equals_flag_to_b(t_list **stack_a, t_list **stack_b, t_cmd **cmd)
 {
 	int	flag;
 
@@ -8,5 +8,6 @@ void	equals_flag_to_b(t_list **stack_a, t_list **stack_b)
 	while (flag && ((*stack_a)->flag == flag))
 	{
 		push_top(stack_b, stack_a);
+		ft_cmdadd_back(cmd, ft_newcmd(4));
 	}
 }
