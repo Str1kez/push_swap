@@ -1,7 +1,7 @@
 #include "push_swap.h"
 #include <stdio.h>
 
-void	check_leaks();
+//void	check_leaks();
 
 void	print_stack(t_list *stack)
 {
@@ -94,6 +94,6 @@ int	main(int argc, char **argv)
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);
 	ft_cmdclear(&cmd);
-	check_leaks();
+//	check_leaks();
 	return (0);
 }
