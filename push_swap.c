@@ -32,7 +32,7 @@ static	void	init_state(t_state *state)
 	state->max = 0;
 }
 
-static	void	push_swap_half(t_list **stack_a, t_list **stack_b,
+void	push_swap_half(t_list **stack_a, t_list **stack_b,
 								 t_state *state, t_cmd **cmd)
 {
 	if (is_sorted(*stack_a))
@@ -50,7 +50,7 @@ static	void	push_swap_half(t_list **stack_a, t_list **stack_b,
 	migrate_to_a(stack_a, stack_b, state, cmd);
 	while ((*stack_a)->flag)
 	{
-		equals_flag_to_b(stack_a, stack_b, cmd);
+		equals_flag_to_b(stack_a, stack_b, state, cmd);
 		migrate_to_a(stack_a, stack_b, state, cmd);
 	}
 	push_swap_half(stack_a, stack_b, state, cmd);
@@ -66,7 +66,7 @@ static	void	push_swap(t_list **stack_a, t_list **stack_b, t_state *state, t_cmd 
 	migrate_to_a(stack_a, stack_b, state, cmd);
 	while ((*stack_a)->flag)
 	{
-		equals_flag_to_b(stack_a, stack_b, cmd);
+		equals_flag_to_b(stack_a, stack_b, state, cmd);
 		migrate_to_a(stack_a, stack_b, state, cmd);
 	}
 	push_swap_half(stack_a, stack_b, state, cmd);
@@ -84,12 +84,18 @@ int	main(int argc, char **argv)
 	cmd = NULL;
 
 	input_handler(&stack_a, argc, argv);
+	if (argc == 1 || !stack_a->next)
+		ft_putstr("\n");
 	set_order_index(stack_a);
 	init_state(&state);
-	push_swap(&stack_a, &stack_b, &state, &cmd);
+	if (stack_a->order == state.next)
+		push_swap_first_next(&stack_a, &stack_b, &state, &cmd);
+	else
+		push_swap(&stack_a, &stack_b, &state, &cmd);
 	print_stack(stack_a);
 	print_stack(stack_b);
-	printf("%d\t%d\n", state.max, state.next);
+//	printf("%d\t%d\n", state.max, state.next);
+	reduction(&cmd);
 	print_commands(cmd);
 	ft_lstclear(&stack_a);
 	ft_lstclear(&stack_b);

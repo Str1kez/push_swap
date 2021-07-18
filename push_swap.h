@@ -24,10 +24,15 @@ void	first_more_then_mid(t_list **stack_b, t_list **stack_a,
 			t_state *state, t_cmd **cmd);
 void	migrate_to_a(t_list	**stack_a, t_list **stack_b,
 			t_state *state, t_cmd **cmd);
-void	equals_flag_to_b(t_list **stack_a, t_list **stack_b, t_cmd **cmd);
+void	equals_flag_to_b(t_list **stack_a, t_list **stack_b,
+			t_state *state, t_cmd **cmd);
 void	less_then_mid_with_sorted(t_list **stack_a,
 			t_list **stack_b, t_state *state, t_cmd **cmd);
 void	rotate_sorted_stack(t_list **stack_a, t_list **stack_b,
+			t_state *state, t_cmd **cmd);
+void	push_swap_half(t_list **stack_a, t_list **stack_b,
+			t_state *state, t_cmd **cmd);
+void	push_swap_first_next(t_list **stack_a, t_list **stack_b,
 			t_state *state, t_cmd **cmd);
 
 #endif //PUSH_SWAP_H
