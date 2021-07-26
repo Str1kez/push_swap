@@ -85,7 +85,10 @@ int	main(int argc, char **argv)
 
 	input_handler(&stack_a, argc, argv);
 	if (argc == 1 || !stack_a->next)
+	{
 		ft_putstr("\n");
+		exit(0);
+	}
 	set_order_index(stack_a);
 	init_state(&state);
 	if (stack_a->order == state.next)

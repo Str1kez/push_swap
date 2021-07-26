@@ -21,6 +21,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new);
 //void	ft_lstadd_front(t_list **lst, t_list *new);
 void	ft_lstclear(t_list **lst);
 //t_list	*ft_lstlast(t_list *lst);
+void	ft_lstswap(t_list *stack);
 t_list	*ft_lstnew(int content);
 int		ft_lstsize(t_list *lst);
 t_cmd	*ft_newcmd(int cmd);
