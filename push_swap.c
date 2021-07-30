@@ -58,9 +58,17 @@ void	push_swap_half(t_list **stack_a, t_list **stack_b,
 
 static	void	push_swap(t_list **stack_a, t_list **stack_b, t_state *state, t_cmd **cmd)
 {
+	int	size_a;
+
+	size_a = ft_lstsize(*stack_a);
 	if (is_sorted(*stack_a))
 		return ;
-	state->max = ft_lstsize(*stack_a);
+	if (size_a < 6)
+	{
+		low_stack(stack_a, stack_b, cmd);
+		return ;
+	}
+	state->max = size_a;
 	state->mid = state->max / 2 + state->next;
 	first_less_then_mid(stack_a, stack_b, state, cmd);
 	migrate_to_a(stack_a, stack_b, state, cmd);
@@ -91,7 +99,7 @@ int	main(int argc, char **argv)
 	}
 	set_order_index(stack_a);
 	init_state(&state);
-	if (stack_a->order == state.next)
+	if (stack_a->order == state.next && ft_lstsize(stack_a) > 5)
 		push_swap_first_next(&stack_a, &stack_b, &state, &cmd);
 	else
 		push_swap(&stack_a, &stack_b, &state, &cmd);
