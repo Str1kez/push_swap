@@ -56,7 +56,8 @@ void	push_swap_half(t_list **stack_a, t_list **stack_b,
 	push_swap_half(stack_a, stack_b, state, cmd);
 }
 
-static	void	push_swap(t_list **stack_a, t_list **stack_b, t_state *state, t_cmd **cmd)
+static	void	push_swap(t_list **stack_a, t_list **stack_b,
+							t_state *state, t_cmd **cmd)
 {
 	int	size_a;
 
@@ -90,7 +91,6 @@ int	main(int argc, char **argv)
 	stack_a = NULL;
 	stack_b = NULL;
 	cmd = NULL;
-
 	input_handler(&stack_a, argc, argv);
 	if (argc == 1 || !stack_a->next)
 	{

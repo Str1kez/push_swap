@@ -1,6 +1,7 @@
 #include "push_swap.h"
 
-void	migrate_to_a(t_list	**stack_a, t_list **stack_b, t_state *state, t_cmd **cmd)
+void	migrate_to_a(t_list	**stack_a, t_list **stack_b,
+					t_state *state, t_cmd **cmd)
 {
 	while (*stack_b)
 	{
