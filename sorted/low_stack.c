@@ -1,6 +1,7 @@
 #include "sorted.h"
 
-static	void	min_to_stack_b(t_list **stack_a, t_list **stack_b, t_cmd **cmd, int min_order)
+static	void	min_to_stack_b(t_list **stack_a, t_list **stack_b,
+								t_cmd **cmd, int min_order)
 {
 	if ((*stack_a)->order != min_order)
 	{
