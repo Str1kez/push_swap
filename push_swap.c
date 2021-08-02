@@ -1,19 +1,4 @@
 #include "push_swap.h"
-#include <stdio.h>
-
-//void	check_leaks();
-
-void	print_stack(t_list *stack)
-{
-	printf("--------------\n");
-	printf("%s\t%s\t%s\n", "value", "order", "flag");
-	while (stack)
-	{
-		printf("%d\t%d\t%d\n", stack->content, stack->order, stack->flag);
-		stack = stack->next;
-	}
-	printf("--------------\n");
-}
 
 void	print_commands(t_cmd *cmd)
 {
@@ -42,7 +27,7 @@ void	push_swap_half(t_list **stack_a, t_list **stack_b,
 	if (((*stack_a)->order == state->max) && ((*stack_a)->next->order == 1))
 	{
 		rotate(stack_a);
-		ft_cmdadd_back(cmd, ft_newcmd(6));
+		ft_cmdadd_back(cmd, ft_newcmd(5));
 		return ;
 	}
 	less_then_mid_with_sorted(stack_a, stack_b, state, cmd);
@@ -92,7 +77,7 @@ int	main(int argc, char **argv)
 	stack_b = NULL;
 	cmd = NULL;
 	input_handler(&stack_a, argc, argv);
-	if (argc == 1 || !stack_a->next)
+	if (argc == 1 || argv[1][0] == '\0')
 	{
 		ft_putstr("\n");
 		exit(0);
@@ -103,14 +88,9 @@ int	main(int argc, char **argv)
 		push_swap_first_next(&stack_a, &stack_b, &state, &cmd);
 	else
 		push_swap(&stack_a, &stack_b, &state, &cmd);
-	print_stack(stack_a);
-	print_stack(stack_b);
-//	printf("%d\t%d\n", state.max, state.next);
 	reduction(&cmd);
 	print_commands(cmd);
 	ft_lstclear(&stack_a);
-	ft_lstclear(&stack_b);
 	ft_cmdclear(&cmd);
-//	check_leaks();
 	return (0);
 }

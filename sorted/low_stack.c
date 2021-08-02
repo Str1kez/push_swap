@@ -39,7 +39,8 @@ static	void	two_in_stack(t_list **stack, t_cmd **cmd)
 static	void	four_in_stack(t_list **stack_a, t_list **stack_b, t_cmd **cmd)
 {
 	min_to_stack_b(stack_a, stack_b, cmd, 1);
-	three_in_stack(stack_a, cmd, 4);
+	if (!is_sorted(*stack_a))
+		three_in_stack(stack_a, cmd, 4);
 	push_top(stack_a, stack_b);
 	ft_cmdadd_back(cmd, ft_newcmd(3));
 }
@@ -53,7 +54,8 @@ static	void	five_in_stack(t_list **stack_a, t_list **stack_b, t_cmd **cmd)
 	}
 	min_to_stack_b(stack_a, stack_b, cmd, 1);
 	min_to_stack_b(stack_a, stack_b, cmd, 2);
-	three_in_stack(stack_a, cmd, 5);
+	if (!is_sorted(*stack_a))
+		three_in_stack(stack_a, cmd, 5);
 	push_top(stack_a, stack_b);
 	ft_cmdadd_back(cmd, ft_newcmd(3));
 	push_top(stack_a, stack_b);
