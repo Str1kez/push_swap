@@ -2,6 +2,6 @@
 /cmake-build-debug
 CMakeLists.txt
 leacks_cheker_ex.c
-checker_Mac
+checker
 *.default
 .vscode
