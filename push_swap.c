@@ -34,12 +34,18 @@ void	push_swap_half(t_list **stack_a, t_list **stack_b,
 {
 	if (is_sorted(*stack_a))
 		return ;
+	if (ft_lstlast(*stack_a)->order + 1 == state->next
+		&& (*stack_a)->order == state->next)
+	{
+		next_elem_top(stack_a, state, cmd);
+		push_swap_half(stack_a, stack_b, state, cmd);
+		return ;
+	}
 	state->max = ft_lstsize(*stack_a);
 	state->mid = (state->max - state->next) / 2 + state->next;
 	if (((*stack_a)->order == state->max) && ((*stack_a)->next->order == 1))
 	{
-		rotate(stack_a);
-		ft_cmdadd_back(cmd, ft_newcmd(5));
+		next_elem_top(stack_a, state, cmd);
 		return ;
 	}
 	less_then_mid_with_sorted(stack_a, stack_b, state, cmd);
@@ -64,6 +70,11 @@ static	void	push_swap(t_list **stack_a, t_list **stack_b,
 	if (size_a < 6)
 	{
 		low_stack(stack_a, stack_b, cmd);
+		return ;
+	}
+	if ((*stack_a)->order == state->next)
+	{
+		push_swap_first_next(stack_a, stack_b, state, cmd);
 		return ;
 	}
 	state->max = size_a;
@@ -96,10 +107,7 @@ int	main(int argc, char **argv)
 	}
 	set_order_index(stack_a);
 	init_state(&state);
-	if (stack_a->order == state.next && ft_lstsize(stack_a) > 5)
-		push_swap_first_next(&stack_a, &stack_b, &state, &cmd);
-	else
-		push_swap(&stack_a, &stack_b, &state, &cmd);
+	push_swap(&stack_a, &stack_b, &state, &cmd);
 	reduction(&cmd);
 	print_commands(cmd);
 	ft_lstclear(&stack_a);

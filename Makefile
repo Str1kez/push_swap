@@ -34,7 +34,8 @@ FILES		=	list_process/ft_cmdadd_back.c	\
 				migrate_to_a.c \
 				push_swap.c \
 				push_swap_first_next.c \
-				rotate_sorted_stack.c
+				rotate_sorted_stack.c \
+				next_elem_top.c
 
 GCC 		=	gcc
 OBJS		=	$(FILES:.c=.o)

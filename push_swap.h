@@ -46,5 +46,6 @@ void	push_swap_half(t_list **stack_a, t_list **stack_b,
 			t_state *state, t_cmd **cmd);
 void	push_swap_first_next(t_list **stack_a, t_list **stack_b,
 			t_state *state, t_cmd **cmd);
+void	next_elem_top(t_list **stack, t_state *state, t_cmd **cmd);
 
 #endif //PUSH_SWAP_H

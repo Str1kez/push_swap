@@ -72,6 +72,7 @@ void	push_swap_first_next(t_list **stack_a, t_list **stack_b,
 		ft_cmdadd_back(cmd, ft_newcmd(5));
 		state->next++;
 		push_swap_first_next(stack_a, stack_b, state, cmd);
+		return ;
 	}
 	state->max = ft_lstsize(*stack_a);
 	state->mid = (state->max - state->next) / 2 + state->next;
