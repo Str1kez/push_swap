@@ -11,6 +11,19 @@
 /* ************************************************************************** */
 
 #include "push_swap.h"
+#include <stdio.h>
+
+void	print_stack(t_list *stack)
+{
+	printf("--------------\n");
+	printf("%s\t%s\t%s\n", "value", "order", "flag");
+	while (stack)
+	{
+		printf("%d\t%d\t%d\n", stack->content, stack->order, stack->flag);
+		stack = stack->next;
+	}
+	printf("--------------\n");
+}
 
 void	print_commands(t_cmd *cmd)
 {
@@ -85,7 +98,15 @@ static	void	push_swap(t_list **stack_a, t_list **stack_b,
 	{
 		equals_flag_to_b(stack_a, stack_b, state, cmd);
 		migrate_to_a(stack_a, stack_b, state, cmd);
+//		reduction(cmd);
+//		print_commands(*cmd);
+//		print_stack(*stack_a);
+//		print_stack(*stack_b);
+//		return ;
 	}
+//	reduction(cmd);
+//	print_commands(*cmd);
+//	return ;
 	push_swap_half(stack_a, stack_b, state, cmd);
 }
 
@@ -108,8 +129,8 @@ int	main(int argc, char **argv)
 	set_order_index(stack_a);
 	init_state(&state);
 	push_swap(&stack_a, &stack_b, &state, &cmd);
-	reduction(&cmd);
-	print_commands(cmd);
+//	reduction(&cmd);
+//	print_commands(cmd);
 	ft_lstclear(&stack_a);
 	ft_cmdclear(&cmd);
 	return (0);
