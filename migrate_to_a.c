@@ -12,6 +12,20 @@
 
 #include "push_swap.h"
 
+static	int	find_max(t_list *stack)
+{
+	int	max;
+
+	max = stack->order;
+	while (stack)
+	{
+		if (stack->order > max)
+			max = stack->order;
+		stack = stack->next;
+	}
+	return (max);
+}
+
 static	void	spin_a(t_list **stack_a, t_list **stack_b,
 						 t_cmd **cmd, int count)
 {
@@ -50,7 +64,7 @@ void	migrate_to_a(t_list	**stack_a, t_list **stack_b,
 {
 	while (*stack_b)
 	{
-		state->max = state->mid;
+		state->max = find_max(*stack_b);
 		state->mid = (state->max - state->next) / 2 + state->next;
 		state->flag++;
 		if (ft_lstsize(*stack_b) == 3)
