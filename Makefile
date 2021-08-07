@@ -2,7 +2,6 @@ FILES		=	list_process/ft_cmdadd_back.c	\
 				list_process/ft_cmdclear.c	\
 				list_process/ft_cmddelete_next.c	\
 				list_process/ft_lstadd_back.c	\
-				list_process/ft_lstadd_front.c	\
 				list_process/ft_lstclear.c	\
 				list_process/ft_lstlast.c	\
 				list_process/ft_lstnew.c	\
@@ -37,6 +36,12 @@ FILES		=	list_process/ft_cmdadd_back.c	\
 				rotate_sorted_stack.c \
 				next_elem_top.c
 
+HEADS		=	input_handlers/input_handlers.h \
+				list_process/list.h	\
+				sorted/sorted.h	\
+				src/src.h \
+				push_swap.h
+
 GCC 		=	gcc
 OBJS		=	$(FILES:.c=.o)
 FLAGS		=	-Wall -Wextra -Werror
@@ -47,7 +52,7 @@ NAME		=	push_swap
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADS)
 	${GCC} ${FLAGS} $(OBJS) -o $(NAME)
 
 clean:
